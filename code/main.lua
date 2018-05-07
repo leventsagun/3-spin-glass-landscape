@@ -1,13 +1,14 @@
-require 'torch'
 require 'math'
-require 'cunn'
+-- require 'cunn'
+require 'nn'
+-- require 'cutorch'
+require 'torch'
 require 'optim'
-require 'cutorch'
 --------------------------------------------------
 require '3spin'
 
 torch.setdefaulttensortype("torch.DoubleTensor")
-cutorch.setDevice(4) --start counting from 1
+-- cutorch.setDevice(4) --start counting from 1
 torch.manualSeed(1)
 
 M = 1 --#samples

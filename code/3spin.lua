@@ -3,13 +3,13 @@
 -- environment is chosen as one of the below ensembles
 function FixEnv(N, distribution)
     if distribution == 1 then
-        surface = torch.CudaTensor(N, N, N):normal()
+        surface = torch.Tensor(N, N, N):normal()
     elseif distribution == 2 then
-        surface = (torch.CudaTensor(N, N, N):bernoulli() - 0.5)*2
+        surface = (torch.Tensor(N, N, N):bernoulli() - 0.5)*2
     elseif distribution == 3 then
-        surface = torch.CudaTensor(N, N, N):uniform(0,math.sqrt(12)) - math.sqrt(12)/2
+        surface = torch.Tensor(N, N, N):uniform(0,math.sqrt(12)) - math.sqrt(12)/2
     elseif distribution == 4 then
-        surface = torch.CudaTensor(N, N, N):exponential(1)-1
+        surface = torch.Tensor(N, N, N):exponential(1)-1
     end
 
     return surface
@@ -20,10 +20,10 @@ function EnergyTensor(spins, couplings)
 
     N=couplings:size()[1]
 
-    w2 = torch.CudaTensor(N)
-    H = torch.CudaTensor(N, N, N)
-    ger_tmp = torch.CudaTensor(N, N)
-    ger_tmp2 = torch.CudaTensor(N^2, N)
+    w2 = torch.Tensor(N)
+    H = torch.Tensor(N, N, N)
+    ger_tmp = torch.Tensor(N, N)
+    ger_tmp2 = torch.Tensor(N^2, N)
 
     w2:copy(spins):resize(N, 1)
     ger_tmp:addmm(0, 1, w2, spins:resize(1, N))
@@ -40,8 +40,8 @@ function SpinItGD(Surface)
 
     N=Surface:size()[1]
 
-    w = torch.CudaTensor(N):normal()
-    gw = torch.CudaTensor(N)
+    w = torch.Tensor(N):normal()
+    gw = torch.Tensor(N)
     w:mul(math.sqrt(N)/(w:norm()))
     wInitial=w
 
