@@ -3,12 +3,9 @@ GD and SGD on the spherical 3-spin glass Hamiltonian
 
 ## Intro
 
-For $N$ variables, fix coefficients $J_{ijk}$ for $i,j,k=1,\dots,n$ sampled from a mean zero variance one distribution, and form the surface of a degree three homogeneous polynomial
-$$
-H(\sigma) = \frac1N \sum_{ijk=1}^NJ_{ijk}\sigma_i\sigma_j\sigma_k
-$$
-with the spherical constraint $\sigma \in S^{N-1}
-(\sqrt(N))$. Then run basic optimization algorithms on this surface starting from a random initial point.
+For a given number of variables, first fix coefficients sampling from a mean zero variance one distribution, and form the surface of a degree three homogeneous polynomial with the spherical constraint. Then run basic optimization algorithms on this surface starting from a random initial point.
+
+![hamiltonian](hamiltonian.png)
 
 ## Notes
 
